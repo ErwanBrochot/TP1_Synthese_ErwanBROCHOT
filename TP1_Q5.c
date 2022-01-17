@@ -33,7 +33,7 @@ int main (){
 		int keyboard_In_Size=read (STDIN_FILENO, keyboard_In ,CMD_SIZE);
 		keyboard_In[keyboard_In_Size-1]='\0';
 		if (strncmp(keyboard_In,exitOrder,CMD_SIZE)==0 || keyboard_In_Size == 0){
-			
+			write (STDOUT_FILENO, msgExit, strlen(msgExit));			
 			break;
 			}
 		else{
@@ -57,7 +57,6 @@ int main (){
 					
 				else if (WIFSIGNALED(status)){
 					sprintf(sonSignal, "enseash [sig : %d %%", WTERMSIG(status));
-					printf("signal exit: %d\n", WTERMSIG(status));
 					write (STDOUT_FILENO, sonSignal, strlen(sonSignal));
 					}
 
